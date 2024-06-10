@@ -1,0 +1,711 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Generative AI Project - Benjamin Amar Rozowykwiat</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2b3fcc70-7775-4526-9e4a-cd0203fb7792" class="page sans"><header><img class="page-cover-image" src="https://images.unsplash.com/photo-1503551723145-6c040742065b-v2?ixlib=rb-4.0.3&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb" style="object-position:center 70.48%"/><h1 class="page-title">Generative AI Project - Benjamin Amar Rozowykwiat</h1><p class="page-description"></p><table class="properties"><tbody><tr class="property-row property-row-checkbox"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/view_gray.svg" style="width:14px;height:14px"/></span>Checkbox</th><td><div class="checkbox checkbox-on"></div></td></tr></tbody></table></header><div class="page-body"><nav id="886b5dbf-f78f-4187-aeb6-2c2252168e3b" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#0fdd50f9-ab8e-45ec-9dc7-18be14b3d993">Introduction and Use Case</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#f900e98c-3f2f-4195-a426-5d09da08a3af">The Tools</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#340dac29-b263-48e5-ba72-10db8cf1a138">Siri</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6a18d736-5a93-4623-8b12-552f17c31f70">ChatGPT</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#237fbbec-207d-498d-bb79-2df36f841948">Notion</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5fd85b86-6468-40c9-a9a2-50a05a0c2a34">ChatGPT prompt</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#8a68232a-5790-4394-aced-46e18e52aea7">ChatGPT Persona</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#03c35022-5b86-4796-9c44-cb38d460bee4">Results</a></div></nav><figure class="block-color-brown_background callout" style="white-space:pre-wrap;display:flex" id="9265125c-7e86-4362-8e35-dc2abc88ab89"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">The best format to read this report is the online version!<br/>Available here :<br/><figure id="dfc7e378-bc84-4a1d-b2e4-a97aafccce8e"><a href="https://benonair.notion.site/Generative-AI-Project-Benjamin-Amar-Rozowykwiat-2b3fcc70777545269e4acd0203fb7792?pvs=4" class="block-color-yellow_background bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Generative AI Project - Benjamin Amar Rozowykwiat | Notion</div><div class="bookmark-description">The best format to read this report is online version! Available here :</div></div><div class="bookmark-href"><img src="https://www.notion.so/front-static/logo-ios.png" class="icon bookmark-icon"/>https://benonair.notion.site/Generative-AI-Project-Benjamin-Amar-Rozowykwiat-2b3fcc70777545269e4acd0203fb7792?pvs=4</div></div><img src="Generative%20AI%20Project%20-%20Benjamin%20Amar%20Rozowykwiat%202b3fcc70777545269e4acd0203fb7792/Untitled.png" class="bookmark-image"/></a></figure></div></figure><h1 id="0fdd50f9-ab8e-45ec-9dc7-18be14b3d993" class="">Introduction and Use Case</h1><div id="701a1bd0-f454-4397-a989-0daaf9427b5c" class="column-list"><div id="0b18123e-bfd9-471d-9a77-8e4f03f0e87c" style="width:56.25%" class="column"><p id="0179925a-311b-4117-8316-b4e9d85ccdc1" class="">This project aims to leverage the capabilities of generative AI to enhance personal and professional productivity, particularly for individuals with disabilities such as ADHD. The application integrates with everyday technologies like Siri and Notion, using advanced AI models to transform simple voice notes into well-organized, summarized text entries. This system not only helps in capturing fleeting thoughts and ideas swiftly but also ensures they are stored systematically for easy retrieval and reference. By automating the process of note-taking and organization, the tool offers a practical solution for managing information overload in our daily lives, supporting those who benefit from structured environments to enhance focus and efficiency.</p></div><div id="5695b2f3-6d6b-44ff-920c-9592b2cdbbcc" style="width:43.75%" class="column"><figure id="746cb7c1-526a-4ea4-a2f9-41ab4677cad0" class="image"><a href="Generative%20AI%20Project%20-%20Benjamin%20Amar%20Rozowykwiat%202b3fcc70777545269e4acd0203fb7792/Untitled%201.png"><img style="width:192px" src="Generative%20AI%20Project%20-%20Benjamin%20Amar%20Rozowykwiat%202b3fcc70777545269e4acd0203fb7792/Untitled%201.png"/></a></figure></div></div><h1 id="f900e98c-3f2f-4195-a426-5d09da08a3af" class="">The Tools</h1><div id="4fd2dd4f-1f17-4a1c-b5cb-b6118f5d29a1" class="column-list"><div id="e32b9b4e-2714-4d71-8fcc-f8b22bc74d14" style="width:6.25%" class="column"><p id="1f184885-f9c2-4574-8956-c82e4fcf0e73" class="">
+</p><figure id="01c1c8b2-c48f-460c-9695-0d4abfbae5c0" class="image"><a href="Generative%20AI%20Project%20-%20Benjamin%20Amar%20Rozowykwiat%202b3fcc70777545269e4acd0203fb7792/Untitled%202.png"><img style="width:84px" src="Generative%20AI%20Project%20-%20Benjamin%20Amar%20Rozowykwiat%202b3fcc70777545269e4acd0203fb7792/Untitled%202.png"/></a></figure></div><div id="3d2159d4-201a-4818-b57a-38288809a106" style="width:93.75%" class="column"><h3 id="340dac29-b263-48e5-ba72-10db8cf1a138" class="">Siri</h3><p id="714d0f2f-67c0-42b6-bb84-83d3f8b762d4" class="">Siri is Apple&#x27;s voice-activated personal assistant, integrated into all its major devices. It uses natural language processing to understand and respond to user requests, from setting reminders to sending messages. In this context, Siri is crucial as it provides an accessible way for users, especially those with disabilities like ADHD, to capture their thoughts verbally without needing to navigate complex interfaces or manually type notes. This hands-free interaction minimizes distractions and aids in focusing and organizing thoughts swiftly.</p></div></div><div id="04ac80c8-f4f0-4255-bbdc-3ce9ce9b26e2" class="column-list"><div id="07d379b2-dca4-4445-b7c1-ba5725cc807a" style="width:6.25%" class="column"><p id="ab390d0b-6e9c-40e0-929f-8095d07193a2" class="">
+</p><figure id="812787ef-2844-490b-8678-d2913cc28a8c" class="image"><a href="Generative%20AI%20Project%20-%20Benjamin%20Amar%20Rozowykwiat%202b3fcc70777545269e4acd0203fb7792/Untitled%203.png"><img style="width:800px" src="Generative%20AI%20Project%20-%20Benjamin%20Amar%20Rozowykwiat%202b3fcc70777545269e4acd0203fb7792/Untitled%203.png"/></a></figure></div><div id="53fb67c6-402a-48c0-be0d-a7994434ca8d" style="width:93.75%" class="column"><h3 id="6a18d736-5a93-4623-8b12-552f17c31f70" class="">ChatGPT</h3><p id="c388759c-2578-4d42-9eff-40d2617035f3" class="">ChatGPT is an advanced language model by OpenAI, skilled at generating text that mimics human writing. In the project, it serves two crucial roles to enhance note management. First, it summarizes the content of the notes, distilling detailed information into concise, easily digestible summaries. This feature is useful for quickly grasping the essence of notes without revisiting the entire text. Second, ChatGPT understands the context and topic of each note, which enables it to generate appropriate titles and select relevant tags from a predefined list. This dual functionality not only aids in retaining the core message of the notes but also categorizes them effectively, improving both retrieval and organizational efficiency.</p></div></div><div id="f602d129-b983-41cf-ab60-7c5a2042ea8f" class="column-list"><div id="6bfec2e4-d60b-4eaf-a1d7-b63da975ff59" style="width:6.25%" class="column"><p id="6e0446d1-6b0e-4cdb-96a7-e2ecb9282dac" class="">
+</p><figure id="d08faebb-79f7-4afb-990a-fb4c01e43575" class="image"><a href="Generative%20AI%20Project%20-%20Benjamin%20Amar%20Rozowykwiat%202b3fcc70777545269e4acd0203fb7792/Untitled%204.png"><img style="width:512px" src="Generative%20AI%20Project%20-%20Benjamin%20Amar%20Rozowykwiat%202b3fcc70777545269e4acd0203fb7792/Untitled%204.png"/></a></figure></div><div id="5d684b71-e5a0-4a48-914f-9a6ebc962803" style="width:93.75%" class="column"><h3 id="237fbbec-207d-498d-bb79-2df36f841948" class="">Notion</h3><p id="717f0e99-ab7d-4f31-8dcb-467db17cd72b" class="">Notion is the platform you are reading this on! It’s a versatile workspace application that combines notes, databases, boards, and calendars into one tool. It&#x27;s highly customizable, allowing users to create systems for personal and professional organization. In the described project, Notion serves as the platform where all processed notes are systematically catalogued. This integration ensures that the information managed through Siri and organized by ChatGPT is easily accessible and usable, providing a centralized and organized digital space ideal for managing tasks and information efficiently.</p></div></div><h2 id="5fd85b86-6468-40c9-a9a2-50a05a0c2a34" class="">ChatGPT prompt</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="344b9fba-78eb-4403-a762-bba6202bf132" class="code"><code class="language-Plain Text">Vous êtes un assistant personnel expert. Vous assistez à la gestion des connaissances personnelles. On vous donne une note spécifique et votre travail consiste à résumer cette note en français. Ensuite, vous examinerez une liste de balises potentielles fournies pour la note. Chaque balise a un nom et un identifiant alphanumérique. Choisissez la balise qui correspond le mieux à la note. Si aucune balise ne convient, choisissez la balise &quot;No Tag&quot;.
+Vous devrez également créer un titre court et simple à partir de la note qui doit parler du sujet principal.
+
+Vous répondrez dans un format très spécifique. Écrivez d&#x27;abord votre résumé. Puis, utilisez trois symboles dièse comme séparateur. Ajoutez ensuite l&#x27;ID de la balise que vous avez choisie.
+
+Format de réponse :
+
+VOTRE_RÉSUMÉ###ID###TITRE
+
+VOTRE_RÉSUMÉ = Le résumé de la note
+
+ID = La séquence alphanumérique après &quot;ID:&quot;, par exemple 25eae788-aaaa-465a-8f33-a30117d2aa12. N&#x27;incluez pas le nom de la balise elle-même, seulement imprimez la séquence alphanumérique.
+
+TITRE = Titre sur le sujet principal de la note
+
+Exemple :
+
+&quot;RÉSUMÉ###25eae788-aaaa-465a-8f33-a30117d2aa12###TITRE&quot; &quot;RÉSUMÉ###60asw2n1-acda-5685a-8f33-a30123aa60###TITRE&quot;
+
+
+
+
+Note:
+&lt;var: Input&gt;
+
+
+Liste des Tags:
+&lt;var: Tag List&gt;</code></pre><h2 id="8a68232a-5790-4394-aced-46e18e52aea7" class="">ChatGPT Persona</h2><p id="8545f5d2-800b-4402-bd4c-705db294716f" class="">Here we don’t go much into details since we don’t want any special personality for our assistant, it only needs to transcript the content and summarize it without changing anything about the tone, language or content. It must be as neutral as possible.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="6dce1e37-f3b3-4482-bf9f-3aa7fa14a701" class="code"><code class="language-Plain Text">Tu es un assistant de Brain Dump très utile pour des utilisateurs atteints de ADHD. Ton rôle est de résumer leur pensées quotidiennes et de leur assigner un Tag afin de les organiser.</code></pre><hr id="c3ee4d1a-3efd-4fdf-8ce8-fa866f974c4d"/><h1 id="03c35022-5b86-4796-9c44-cb38d460bee4" class="">Results</h1><p id="ca8e2685-ed78-4e92-a38e-82a04a788b5b" class="">You can try out the tool yourself by importing the following Apple Shortcut, you can use it in multiple ways :</p><ul id="b22b8f96-657f-4e00-9fb1-544a824e39f5" class="bulleted-list"><li style="list-style-type:disc">Just run it and write your note with a keyboard</li></ul><ul id="44783466-aeca-47db-a0ae-ba79c0683d66" class="bulleted-list"><li style="list-style-type:disc">Start Siri and ask “Prends une note” to then tell verbally the note (you may have to rename the Shortcut <em>“Prends une note”</em> without the <em>“(test only)”</em>)</li></ul><p id="a72f9e2a-ec7c-404b-9721-61695bdc5a15" class="">When using the tool you will see the result appearing as a new entry in the  table.</p><p id="12f8486a-66a5-4bb2-91a7-8b050816fc20" class="">This page is read-only, you cannot edit the  or  tables.</p><p id="218bbd3b-d9a2-49a7-94d8-6fe6be2ba2e4" class=""> </p><blockquote id="bd7f9354-6434-4cb6-83a3-d94920bef425" class="block-color-red"><mark class="highlight-default"><strong>The Shortcut</strong></mark><figure id="3e52e8b9-b84e-405d-a17e-cbb18781adf8"><a href="https://www.icloud.com/shortcuts/92bc1da50d94415fa6da917e440ffc61" class="block-color-red_background bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Shortcuts</div></div><div class="bookmark-href"><img src="https://www.icloud.com/favicon.ico" class="icon bookmark-icon"/>https://www.icloud.com/shortcuts/92bc1da50d94415fa6da917e440ffc61</div></div></a></figure><figure class="block-color-red callout" style="white-space:pre-wrap;display:flex" id="4830ab3c-124d-46dc-846f-9902b573e5cd"><div style="font-size:1.5em"><span class="icon">⚠️</span></div><div style="width:100%">This Apple Shortcut uses “Test Only” API keys that are limited in quotas to avoid high credits consumption, these keys will be suspended at some point in a later future.</div></figure></blockquote><p id="c6907287-203c-43fb-9174-bef51f0ac30f" class="">
+</p><p id="f5f9af81-69ba-451b-a404-5741170bff74" class="">This is the table containing the notes. They are stored with the properties generated by ChatGPT.</p><p id="637c406f-31c0-4f1e-a3d1-b47c6e7a0b8c" class="">The notes are also sorted by tags to find them easily.</p><blockquote id="def52f32-4c8d-405f-9cf9-343c6065808f" class=""><strong>Notes</strong><div id="f769acd1-09be-43f5-a2d1-5fe93cb22ab7" class="collection-content"><h4 class="collection-title">Notes</h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesTitle"><path d="M0.637695 13.1914C1.0957 13.1914 1.32812 13 1.47852 12.5215L2.24414 10.3887H6.14746L6.90625 12.5215C7.05664 13 7.2959 13.1914 7.74707 13.1914C8.22559 13.1914 8.5332 12.9043 8.5332 12.4531C8.5332 12.2891 8.50586 12.1523 8.44434 11.9678L5.41602 3.79199C5.2041 3.21777 4.82129 2.9375 4.19922 2.9375C3.60449 2.9375 3.21484 3.21777 3.0166 3.78516L-0.0322266 12.002C-0.09375 12.1797 -0.121094 12.3232 -0.121094 12.4668C-0.121094 12.918 0.166016 13.1914 0.637695 13.1914ZM2.63379 9.12402L4.17871 4.68066H4.21973L5.76465 9.12402H2.63379ZM12.2793 13.2324C13.3115 13.2324 14.2891 12.6787 14.7129 11.8037H14.7402V12.5762C14.7471 12.9863 15.0273 13.2393 15.4238 13.2393C15.834 13.2393 16.1143 12.9795 16.1143 12.5215V8.00977C16.1143 6.49902 14.9658 5.52148 13.1543 5.52148C11.7666 5.52148 10.6592 6.08887 10.2695 6.99121C10.1943 7.15527 10.1533 7.3125 10.1533 7.46289C10.1533 7.81152 10.4062 8.04395 10.7686 8.04395C11.0215 8.04395 11.2129 7.94824 11.3496 7.73633C11.7529 6.99121 12.2861 6.65625 13.1064 6.65625C14.0977 6.65625 14.6992 7.20996 14.6992 8.1123V8.67285L12.5664 8.7959C10.7686 8.8916 9.77734 9.69824 9.77734 11.0107C9.77734 12.3369 10.8096 13.2324 12.2793 13.2324ZM12.6621 12.1387C11.8008 12.1387 11.2129 11.667 11.2129 10.9561C11.2129 10.2725 11.7598 9.82129 12.7578 9.75977L14.6992 9.62988V10.3203C14.6992 11.3457 13.7969 12.1387 12.6621 12.1387Z"></path></svg></span>Note</th><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesRelation"><path d="M13.1475 10.5869V3.72363C13.1475 3.25195 12.833 2.93066 12.3477 2.93066H5.48438C5.02637 2.93066 4.70508 3.27246 4.70508 3.67578C4.70508 4.07227 5.05371 4.40039 5.46387 4.40039H7.89746L10.8438 4.30469L9.59961 5.39844L3.08496 11.9199C2.92773 12.0771 2.8457 12.2686 2.8457 12.46C2.8457 12.8564 3.20801 13.2256 3.61816 13.2256C3.80957 13.2256 3.99414 13.1504 4.15137 12.9932L10.6729 6.47168L11.7803 5.22754L11.6641 8.05762V10.6074C11.6641 11.0176 11.9922 11.373 12.4023 11.373C12.8057 11.373 13.1475 11.0312 13.1475 10.5869Z"></path></svg></span>Tags</th><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesText"><path d="M1.56738 3.25879H14.4258C14.7676 3.25879 15.0479 2.97852 15.0479 2.63672C15.0479 2.29492 14.7744 2.02148 14.4258 2.02148H1.56738C1.21875 2.02148 0.952148 2.29492 0.952148 2.63672C0.952148 2.97852 1.22559 3.25879 1.56738 3.25879ZM1.56738 6.84082H14.4258C14.7676 6.84082 15.0479 6.56055 15.0479 6.21875C15.0479 5.87695 14.7744 5.60352 14.4258 5.60352H1.56738C1.21875 5.60352 0.952148 5.87695 0.952148 6.21875C0.952148 6.56055 1.22559 6.84082 1.56738 6.84082ZM1.56738 10.4229H14.4258C14.7676 10.4229 15.0479 10.1426 15.0479 9.80078C15.0479 9.45898 14.7744 9.18555 14.4258 9.18555H1.56738C1.21875 9.18555 0.952148 9.45898 0.952148 9.80078C0.952148 10.1426 1.22559 10.4229 1.56738 10.4229ZM1.56738 14.0049H8.75879C9.10059 14.0049 9.38086 13.7246 9.38086 13.3828C9.38086 13.041 9.10742 12.7676 8.75879 12.7676H1.56738C1.21875 12.7676 0.952148 13.041 0.952148 13.3828C0.952148 13.7246 1.22559 14.0049 1.56738 14.0049Z"></path></svg></span>Summary</th><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesText"><path d="M1.56738 3.25879H14.4258C14.7676 3.25879 15.0479 2.97852 15.0479 2.63672C15.0479 2.29492 14.7744 2.02148 14.4258 2.02148H1.56738C1.21875 2.02148 0.952148 2.29492 0.952148 2.63672C0.952148 2.97852 1.22559 3.25879 1.56738 3.25879ZM1.56738 6.84082H14.4258C14.7676 6.84082 15.0479 6.56055 15.0479 6.21875C15.0479 5.87695 14.7744 5.60352 14.4258 5.60352H1.56738C1.21875 5.60352 0.952148 5.87695 0.952148 6.21875C0.952148 6.56055 1.22559 6.84082 1.56738 6.84082ZM1.56738 10.4229H14.4258C14.7676 10.4229 15.0479 10.1426 15.0479 9.80078C15.0479 9.45898 14.7744 9.18555 14.4258 9.18555H1.56738C1.21875 9.18555 0.952148 9.45898 0.952148 9.80078C0.952148 10.1426 1.22559 10.4229 1.56738 10.4229ZM1.56738 14.0049H8.75879C9.10059 14.0049 9.38086 13.7246 9.38086 13.3828C9.38086 13.041 9.10742 12.7676 8.75879 12.7676H1.56738C1.21875 12.7676 0.952148 13.041 0.952148 13.3828C0.952148 13.7246 1.22559 14.0049 1.56738 14.0049Z"></path></svg></span>Transcript</th></tr></thead><tbody><tr id="827110a7-b731-461b-b35e-e5b62c0850ee"><td class="cell-title"><a href="https://www.notion.so/Devoir-GenAI-827110a7b731461bb35ee5b62c0850ee?pvs=21">Devoir GenAI</a></td><td class="cell-:`^g"><a href="https://www.notion.so/Etudes-33331e95d1614af09c3d86f4515f4dc8?pvs=21"><span class="icon">🎓</span>Etudes</a></td><td class="cell-zo=V">Le devoir de GenAI semble bien avancé et je pense que je peux le rendre bientôt.</td><td class="cell-;rys">Le devoir de GenAI semble être bien avancé je pense que je peux le rendre bientôt</td></tr><tr id="0ef5d03a-21fb-4d8b-b320-36bf7d3cd4cd"><td class="cell-title"><a href="https://www.notion.so/Outil-de-gestion-des-id-es-0ef5d03a21fb4d8bb32036bf7d3cd4cd?pvs=21">Outil de gestion des idées</a></td><td class="cell-:`^g"><a href="https://www.notion.so/Projets-02704edd5ac041d58525d2d89d5b9794?pvs=21"><span class="icon">💡</span>Projets</a></td><td class="cell-zo=V">Création d&#x27;un outil pour noter et organiser mes pensées au quotidien</td><td class="cell-;rys">J&#x27;ai eu une idée c&#x27;est de créer un outil qui permette de noter facilement mes idées au quotidien et qui les organise, les résume et les trie à ma place! Et je n&#x27;ai qu&#x27;à ouvrir une page pour y accéder et retrouver toutes mes pensées à un seul endroit!</td></tr><tr id="3c0975b8-c795-4cee-9bf0-d684fbfb22ad"><td class="cell-title"><a href="https://www.notion.so/Liste-de-courses-3c0975b8c7954cee9bf0d684fbfb22ad?pvs=21">Liste de courses</a></td><td class="cell-:`^g"><a href="https://www.notion.so/Quotidien-3dbd29a0f49646cfa5533b55a47b823a?pvs=21"><span class="icon">🗓️</span>Quotidien</a></td><td class="cell-zo=V">Je dois acheter des pâtes ce soir et du nouveau shampooing.</td><td class="cell-;rys">Il faudrait que je pense à acheter des pâtes ce soir pour faire les courses et que je prenne du nouveau shampooing</td></tr><tr id="abf8996d-6390-4fb5-bf53-20c04824934b"><td class="cell-title"><a href="https://www.notion.so/Achat-Masque-de-Natation-abf8996d63904fb5bf5320c04824934b?pvs=21">Achat Masque de Natation</a></td><td class="cell-:`^g"><a href="https://www.notion.so/Sport-d3eb9142e7a84f37b07023c4c6c95bde?pvs=21"><span class="icon">👟</span>Sport</a></td><td class="cell-zo=V">Besoin d&#x27;acheter un nouveau masque de natation pour l&#x27;apnée avec couverture du nez.</td><td class="cell-;rys">Il faut que j&#x27;achète un nouveau masque de natation avec une couverture du nez pour l&#x27;apnée</td></tr><tr id="d74a2c8a-69d3-471b-9c1a-fe05afe58a29"><td class="cell-title"><a href="https://www.notion.so/Pratiquer-la-natation-d74a2c8a69d3471b9c1afe05afe58a29?pvs=21">Pratiquer la natation</a></td><td class="cell-:`^g"><a href="https://www.notion.so/Sport-d3eb9142e7a84f37b07023c4c6c95bde?pvs=21"><span class="icon">👟</span>Sport</a></td><td class="cell-zo=V">La personne doit faire de la natation cette semaine avant de partir à Montréal.<br/><br/><br/></td><td class="cell-;rys">Il faut que j&#x27;aille faire de la natation cette semaine avant de partir à Montréal</td></tr><tr id="3d1db543-8c78-4f7f-b32a-4636c6e2c1ea"><td class="cell-title"><a href="https://www.notion.so/Achat-de-produit-personnel-3d1db5438c784f7fb32a4636c6e2c1ea?pvs=21">Achat de produit personnel</a></td><td class="cell-:`^g"><a href="https://www.notion.so/Vie-Perso-03f1b3aca5fe4b03a27cec9c2b461a8f?pvs=21"><span class="icon">🚶</span>Vie Perso</a></td><td class="cell-zo=V">Acheter du shampoing avant de partir à Montréal</td><td class="cell-;rys">acheter du shampoing avant de partir à montréal</td></tr><tr id="2bc5d7b6-f480-4f18-b25b-83f6b25b2fde"><td class="cell-title"><a href="https://www.notion.so/Rappel-passer-2bc5d7b6f4804f18b25b83f6b25b2fde?pvs=21">Rappel à passer
+
+</a></td><td class="cell-:`^g"><a href="https://www.notion.so/Vie-Perso-03f1b3aca5fe4b03a27cec9c2b461a8f?pvs=21"><span class="icon">🚶</span>Vie Perso</a></td><td class="cell-zo=V">Dois appeler Mamie avant vendredi prochain.</td><td class="cell-;rys">Je dois appeler Mamie avant vendredi prochain</td></tr></tbody></table><br/><br/></div></blockquote><hr id="909ba623-2a12-48da-b1fa-0cd4313efcdf"/><p id="aa352322-28bd-49e3-9de0-5a9ed997937f" class="">
+</p><p id="50f10a4e-62da-488e-a7e9-ca44178a671f" class="">This is the tag list, it can be edited at any moment to add, edit or remove any tag.</p><div id="1e9e20ad-af56-478f-b8d8-bf3793aa7e6c" class="collection-content"><h4 class="collection-title">Tags</h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesTitle"><path d="M0.637695 13.1914C1.0957 13.1914 1.32812 13 1.47852 12.5215L2.24414 10.3887H6.14746L6.90625 12.5215C7.05664 13 7.2959 13.1914 7.74707 13.1914C8.22559 13.1914 8.5332 12.9043 8.5332 12.4531C8.5332 12.2891 8.50586 12.1523 8.44434 11.9678L5.41602 3.79199C5.2041 3.21777 4.82129 2.9375 4.19922 2.9375C3.60449 2.9375 3.21484 3.21777 3.0166 3.78516L-0.0322266 12.002C-0.09375 12.1797 -0.121094 12.3232 -0.121094 12.4668C-0.121094 12.918 0.166016 13.1914 0.637695 13.1914ZM2.63379 9.12402L4.17871 4.68066H4.21973L5.76465 9.12402H2.63379ZM12.2793 13.2324C13.3115 13.2324 14.2891 12.6787 14.7129 11.8037H14.7402V12.5762C14.7471 12.9863 15.0273 13.2393 15.4238 13.2393C15.834 13.2393 16.1143 12.9795 16.1143 12.5215V8.00977C16.1143 6.49902 14.9658 5.52148 13.1543 5.52148C11.7666 5.52148 10.6592 6.08887 10.2695 6.99121C10.1943 7.15527 10.1533 7.3125 10.1533 7.46289C10.1533 7.81152 10.4062 8.04395 10.7686 8.04395C11.0215 8.04395 11.2129 7.94824 11.3496 7.73633C11.7529 6.99121 12.2861 6.65625 13.1064 6.65625C14.0977 6.65625 14.6992 7.20996 14.6992 8.1123V8.67285L12.5664 8.7959C10.7686 8.8916 9.77734 9.69824 9.77734 11.0107C9.77734 12.3369 10.8096 13.2324 12.2793 13.2324ZM12.6621 12.1387C11.8008 12.1387 11.2129 11.667 11.2129 10.9561C11.2129 10.2725 11.7598 9.82129 12.7578 9.75977L14.6992 9.62988V10.3203C14.6992 11.3457 13.7969 12.1387 12.6621 12.1387Z"></path></svg></span>Name</th></tr></thead><tbody><tr id="3dbd29a0-f496-46cf-a553-3b55a47b823a"><td class="cell-title"><a href="https://www.notion.so/Quotidien-3dbd29a0f49646cfa5533b55a47b823a?pvs=21"><span class="icon">🗓️</span>Quotidien</a></td></tr><tr id="02704edd-5ac0-41d5-8525-d2d89d5b9794"><td class="cell-title"><a href="https://www.notion.so/Projets-02704edd5ac041d58525d2d89d5b9794?pvs=21"><span class="icon">💡</span>Projets</a></td></tr><tr id="33331e95-d161-4af0-9c3d-86f4515f4dc8"><td class="cell-title"><a href="https://www.notion.so/Etudes-33331e95d1614af09c3d86f4515f4dc8?pvs=21"><span class="icon">🎓</span>Etudes</a></td></tr><tr id="2e77d0ef-56b4-497b-9ee2-9663823a2dcf"><td class="cell-title"><a href="https://www.notion.so/Administratif-2e77d0ef56b4497b9ee29663823a2dcf?pvs=21"><span class="icon">📄</span>Administratif</a></td></tr><tr id="b69641e8-92c3-498e-945a-3055d351ce21"><td class="cell-title"><a href="https://www.notion.so/Vie-Sociale-b69641e892c3498e945a3055d351ce21?pvs=21"><span class="icon">🕺</span>Vie Sociale</a></td></tr><tr id="03f1b3ac-a5fe-4b03-a27c-ec9c2b461a8f"><td class="cell-title"><a href="https://www.notion.so/Vie-Perso-03f1b3aca5fe4b03a27cec9c2b461a8f?pvs=21"><span class="icon">🚶</span>Vie Perso</a></td></tr><tr id="d3eb9142-e7a8-4f37-b070-23c4c6c95bde"><td class="cell-title"><a href="https://www.notion.so/Sport-d3eb9142e7a84f37b07023c4c6c95bde?pvs=21"><span class="icon">👟</span>Sport</a></td></tr><tr id="b55fa00f-e04e-4f8b-aeda-16c4be53fe5d"><td class="cell-title"><a href="https://www.notion.so/No-Tag-b55fa00fe04e4f8baeda16c4be53fe5d?pvs=21"><span class="icon">📌</span>No Tag</a></td></tr></tbody></table><br/><br/></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
