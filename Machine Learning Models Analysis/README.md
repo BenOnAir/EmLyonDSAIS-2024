@@ -4,7 +4,7 @@
 Benjamin Amar Rozowykwiat
 
 ## Date
-Novembre 2023
+November 2023
 
 ## Overview
 This repository contains a series of notebooks focused on the analysis, preprocessing, and modeling of video game metrics. The project involves cleaning and exploring the dataset, performing feature engineering, and building predictive models to derive insights from the data.
